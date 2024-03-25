@@ -12,20 +12,20 @@ https://e-shop-seven-phi.vercel.app/
 
 ## Features:
 
-🖌️ Awesome UI in TailwindCSS
-🔥 Full responsiveness
-🔐 Authentication with Google Login in Next Auth
-👀 Admin Dashboard
-📉 Shop Statistics (Summary)
-⬆️ Image Uploads in Firebase Storage
-🔎 Search Functionality
-👨‍👩‍👧‍👦 Product Categories
-🔥 Product Rating
-🛠️ Manage Products
-🛠️ Manage Orders
-🚀 Server error handling
-💰 Payment Integration in Stripe
-📉 Graph of your revenue
+-🖌️ Awesome UI in TailwindCSS
+-🔥 Full responsiveness
+-🔐 Authentication with Google Login in Next Auth
+-👀 Admin Dashboard
+-📉 Shop Statistics (Summary)
+-⬆️ Image Uploads in Firebase Storage
+-🔎 Search Functionality
+-👨‍👩‍👧‍👦 Product Categories
+-🔥 Product Rating
+-🛠️ Manage Products
+-🛠️ Manage Orders
+-🚀 Server error handling
+-💰 Payment Integration in Stripe
+-📉 Graph of your revenue
 
 
 ## Technologies used
