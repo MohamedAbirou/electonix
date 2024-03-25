@@ -3,12 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-export const config = {
-  api: {
-    bodyParse: false,
-  },
-};
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2023-10-16",
 });
