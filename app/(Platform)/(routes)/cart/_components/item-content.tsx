@@ -1,12 +1,12 @@
 "use client";
 
 import { formatter } from "@/utils/formatter";
-import { CartProductType } from "../../product/[productId]/_components/product-details";
 import Link from "next/link";
 import { truncateText } from "@/utils/truncate-text";
 import Image from "next/image";
 import { ProductQuantity } from "@/components/product/product-quantity";
 import { useCart } from "@/hooks/use-cart";
+import { CartProductType } from "@prisma/client";
 
 interface ItemContentProps {
   item: CartProductType;

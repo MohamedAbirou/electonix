@@ -6,6 +6,7 @@ import { UserMenu } from "./user-menu";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { Categories } from "./categories/categories";
 import { SearchBar } from "./inputs/search-bar";
+import { Suspense } from "react";
 
 const redressed = Redressed({ subsets: ["latin"], weight: ["400"] });
 
@@ -33,7 +34,15 @@ export const Navbar = async () => {
           </div>
         </Container>
       </div>
-      <Categories />
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center h-[100vh]">
+            Loading...
+          </div>
+        }
+      >
+        <Categories />
+      </Suspense>
     </div>
   );
 };

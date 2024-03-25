@@ -1,9 +1,7 @@
 "use client";
 
-import {
-  CartProductType,
-  SelectedImgType,
-} from "@/app/(Platform)/(routes)/product/[productId]/_components/product-details";
+import { SelectedImgType } from "@/types";
+import { CartProductType } from "@prisma/client";
 
 interface ProductColorProps {
   images: SelectedImgType[];
