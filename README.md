@@ -1,9 +1,9 @@
-# E-Shop
+# ElectroniX
 
 ## Demo
 <br />
 
-https://e-shop-seven-phi.vercel.app/
+[![ElectroniX](https://github.com/MohamedAbirou/electonix/assets/109366637/dd2e4825-75a4-4e0a-a0b0-cd4d7c0f71a5)](https://electonix.vercel.app/)
 
 
 <br />
