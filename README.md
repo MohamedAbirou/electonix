@@ -3,8 +3,7 @@
 ## Demo
 <br />
 
-[![ElectroniX](https://github.com/MohamedAbirou/electonix/assets/109366637/dd2e4825-75a4-4e0a-a0b0-cd4d7c0f71a5)](https://electonix.vercel.app/)
-
+[![ElectroniX](https://github.com/MohamedAbirou/electonix/assets/109366637/20304dc2-d1ad-4099-8be6-9748a2f518e6)](https://electonix.vercel.app/)
 
 <br />
 <br />
