@@ -32,7 +32,7 @@ export const ProductColor = ({
           >
             <div
               style={{ background: image.colorCode }}
-              className="h-6 w-6 rounded-full border-[1.2px] border-slate-300 cursor-pointer"
+              className="h-6 w-6 rounded-full border-[1.2px] border-zinc-300 cursor-pointer"
             ></div>
           </div>
         ))}

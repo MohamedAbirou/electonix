@@ -80,14 +80,14 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         product={product}
         handleColorSelect={handleColorSelect}
       />
-      <div className="flex flex-col gap-1 text-slate-500 text-sm">
-        <h2 className="text-2xl md:text-3xl font-medium text-slate-700">
+      <div className="flex flex-col gap-1 text-sky-500 text-sm">
+        <h2 className="text-2xl md:text-3xl font-medium text-sky-700">
           {product?.name}
         </h2>
-        <div className="text-slate-400 pl-0.5 pt-1">{product.category}</div>
+        <div className="text-sky-400 pl-0.5 pt-1">{product.category}</div>
         <div
           className={`${
-            product.inStock ? "text-green-500" : "text-rose-500"
+            product.inStock ? "text-emerald-500" : "text-rose-500"
           } pl-0.5`}
         >
           {product.inStock ? "In Stock" : "Out of stock"}
@@ -106,8 +106,8 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         <hr className="my-5" />
         {isProductInCart ? (
           <>
-            <p className="mb-2 text-slate-500 flex items-center gap-1">
-              <MdCheckCircle className="text-teal-400" size={20} />
+            <p className="mb-2 text-sky-500 flex items-center gap-1">
+              <MdCheckCircle className="text-sky-400" size={20} />
               <span>Product added to cart</span>
             </p>
             <div>

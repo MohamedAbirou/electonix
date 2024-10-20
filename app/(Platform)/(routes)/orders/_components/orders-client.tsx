@@ -1,14 +1,14 @@
 "use client";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { formatter } from "@/utils/formatter";
 import { Heading } from "@/components/heading";
-import { Status } from "@/components/status";
 import { ActionBtn } from "@/components/inputs/action-btn";
-import { MdRemoveRedEye } from "react-icons/md";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Status } from "@/components/status";
+import { formatter } from "@/utils/formatter";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Order, User } from "@prisma/client";
 import moment from "moment";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { MdRemoveRedEye } from "react-icons/md";
 
 type ExtendedOrder = Order & {
   user: User;
@@ -54,7 +54,7 @@ export const OrdersClient = ({ orders }: OrdersClientProps) => {
       headerName: "Amount(USD)",
       width: 130,
       renderCell: (params) => (
-        <div className="font-bold text-slate-800">{params.row.amount}</div>
+        <div className="font-bold text-sky-800">{params.row.amount}</div>
       ),
     },
     {
@@ -64,7 +64,7 @@ export const OrdersClient = ({ orders }: OrdersClientProps) => {
       renderCell: (params) => (
         <div>
           {params.row.paymentStatus === "pending" ? (
-            <Status text="pending" bg="bg-slate-200" color="text-slate-700" />
+            <Status text="pending" bg="bg-zinc-200" color="text-zinc-700" />
           ) : params.row.paymentStatus === "complete" ? (
             <Status text="completed" bg="bg-green-200" color="text-green-700" />
           ) : null}
@@ -80,8 +80,8 @@ export const OrdersClient = ({ orders }: OrdersClientProps) => {
           {params.row.deliveryStatus === "pending" ? (
             <Status
               text="pending"
-              bg="bg-slate-200"
-              color="text-slate-700"
+              bg="bg-zinc-200"
+              color="text-zinc-700"
               isLoading={
                 loadingStates[params.row.id]?.reset ||
                 loadingStates[params.row.id]?.dispatch ||

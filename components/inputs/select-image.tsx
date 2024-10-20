@@ -26,7 +26,7 @@ export const SelectImage = ({ item, handleFileChange }: SelectImageProps) => {
   return (
     <div
       {...getRootProps()}
-      className="border-2 border-slate-400 p-2 border-dashed cursor-pointer text-sm font-normal text-slate-400 flex items-center justify-center"
+      className="border-2 border-sky-400 p-2 border-dashed cursor-pointer text-sm font-normal text-sky-400 flex items-center justify-center"
     >
       <input {...getInputProps()} />
       {isDragActive ? (

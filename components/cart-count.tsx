@@ -14,7 +14,7 @@ export const CartCount = () => {
     >
       <ShoppingCart className="w-[1.6rem] h-[1.6rem]" />
       {cartTotalQty > 0 && (
-        <span className="absolute top-[-10px] right-[-10px] bg-slate-700 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs">
+        <span className="absolute top-[-10px] right-[-10px] bg-sky-700 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs">
           {cartTotalQty}
         </span>
       )}

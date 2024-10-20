@@ -1,13 +1,13 @@
 "use client";
 
+import { Button } from "@/components/inputs/button";
 import { useCart } from "@/hooks/use-cart";
+import { Elements } from "@stripe/react-stripe-js";
+import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutForm } from "./checkout-form";
-import { Button } from "@/components/inputs/button";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
@@ -92,7 +92,7 @@ export const CheckoutClient = () => {
       )}
       {paymentSuccess && (
         <div className="flex items-center flex-col gap-4">
-          <div className="text-teal-500 text-center">Payment Success</div>
+          <div className="text-sky-500 text-center">Payment Success</div>
           <div className="max-w-[220px] w-full">
             <Button
               label="View Your Orders"

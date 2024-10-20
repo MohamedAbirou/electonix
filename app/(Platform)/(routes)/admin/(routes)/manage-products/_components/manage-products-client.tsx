@@ -1,24 +1,26 @@
 "use client";
-import { Product } from "@prisma/client";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { formatter } from "@/utils/formatter";
 import { Heading } from "@/components/heading";
-import { Status } from "@/components/status";
 import { ActionBtn } from "@/components/inputs/action-btn";
-import { MdCached, MdDelete, MdRemoveRedEye } from "react-icons/md";
-import { useCallback, useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import { deleteObject, getStorage, ref } from "firebase/storage";
+import { Status } from "@/components/status";
 import { app } from "@/lib/firebase";
+import { formatter } from "@/utils/formatter";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { Order, Product } from "@prisma/client";
+import axios from "axios";
+import { deleteObject, getStorage, ref } from "firebase/storage";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import toast from "react-hot-toast";
+import { MdCached, MdDelete, MdRemoveRedEye } from "react-icons/md";
 
 interface ManageProductsClientProps {
   products: Product[];
+  orders: Order[];
 }
 
 export const ManageProductsClient = ({
   products,
+  orders,
 }: ManageProductsClientProps) => {
   const [isLoading, setIsLoading] = useState<{
     [key: string]: { inStock: boolean };
@@ -37,6 +39,9 @@ export const ManageProductsClient = ({
         brand: product.brand,
         inStock: product.inStock,
         images: product.images,
+        createdAt: product.createdAt
+          ? new Date(product.createdAt).toLocaleDateString("en-US")
+          : "N/A", // Fallback if createdAt is null
       };
     });
   }
@@ -45,7 +50,7 @@ export const ManageProductsClient = ({
     {
       field: "id",
       headerName: "ID",
-      width: 220,
+      width: 150,
     },
     {
       field: "name",
@@ -57,7 +62,7 @@ export const ManageProductsClient = ({
       headerName: "Price(USD)",
       width: 100,
       renderCell: (params) => (
-        <div className="font-bold text-slate-800">{params.row.price}</div>
+        <div className="font-bold text-sky-800">{params.row.price}</div>
       ),
     },
     {
@@ -71,6 +76,15 @@ export const ManageProductsClient = ({
       width: 100,
     },
     {
+      field: "createdAt",
+      headerName: "Created At",
+      width: 100,
+      align: "center",
+      renderCell: (params) => (
+        <div className="font-bold text-sky-800">{params.row.createdAt}</div>
+      ),
+    },
+    {
       field: "inStock",
       headerName: "InStock",
       width: 120,
@@ -79,8 +93,8 @@ export const ManageProductsClient = ({
           {params.row.inStock === true ? (
             <Status
               text="in stock"
-              bg="bg-teal-200"
-              color="text-teal-700"
+              bg="bg-emerald-200"
+              color="text-emerald-700"
               isLoading={isLoading[params.row.id]?.inStock}
             />
           ) : (
@@ -149,6 +163,16 @@ export const ManageProductsClient = ({
       try {
         toast("Deleting product, please wait!");
 
+        // Cannot delete a product if it is being ordered
+        const order = orders.filter((order) =>
+          order.products.some((p) => p.id === id)
+        );
+
+        if (order.length > 0) {
+          toast.error("Cannot delete product while it is being ordered");
+          return;
+        }
+
         const handleImageDelete = async () => {
           try {
             for (const item of images) {
@@ -172,7 +196,7 @@ export const ManageProductsClient = ({
         toast.error("Something went wrong!");
       }
     },
-    [router, storage]
+    [router, storage, products]
   );
 
   return (

@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import { AdminNav } from "./_components/admin-nav";
 
 export const metadata: Metadata = {
-  title: "E-Shop Admin",
-  description: "E-Shop Admin Dashboard",
+  title: "ElectroniX Admin",
+  description: "ElectroniX Admin Dashboard",
 };
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div className="bg-">
       <AdminNav />
       {children}
     </div>

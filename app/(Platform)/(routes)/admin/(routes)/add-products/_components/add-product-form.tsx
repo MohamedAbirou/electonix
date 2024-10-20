@@ -1,26 +1,26 @@
 "use client";
-import { Button } from "@/components/inputs/button";
 import { CategoryItem } from "@/components/categories/categoryItem";
-import { Checkbox } from "@/components/inputs/checkbox";
 import { Heading } from "@/components/heading";
+import { Button } from "@/components/inputs/button";
+import { Checkbox } from "@/components/inputs/checkbox";
 import { Input } from "@/components/inputs/input";
 import { SelectColor } from "@/components/inputs/select-color";
 import { TextArea } from "@/components/inputs/textarea";
 import { categories } from "@/constants/categories";
 import { colors } from "@/constants/colors";
+import { app } from "@/lib/firebase";
 import { ImageType, SelectedImgType } from "@/types";
-import { useCallback, useEffect, useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+import axios from "axios";
 import {
   getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
-import { app } from "@/lib/firebase";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export const AddProductForm = () => {
   const router = useRouter();

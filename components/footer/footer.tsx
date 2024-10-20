@@ -1,23 +1,26 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import { MdFacebook } from "react-icons/md";
 import Container from "../container";
 import FooterList from "./footer-list";
-import { MdFacebook } from "react-icons/md";
-import { FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6";
 
 export const Footer = () => {
+  const pathname = usePathname();
+
   return (
-    <footer className="bg-slate-700 px-3 text-slate-200 text-sm mt-16">
+    <footer className="bg-sky-700 px-3 text-sky-200 text-sm mt-16">
       <Container>
         <div className="flex flex-col md:flex-row justify-between pt-16 pb-8">
           <FooterList>
             <h3 className="font-bold text-base mb-2">Shop Categories</h3>
-            <Link href="?category=Phone">Phones</Link>
-            <Link href="?category=Laptop">Laptops</Link>
-            <Link href="?category=Desktop">Desktops</Link>
-            <Link href="?category=Watch">Watches</Link>
-            <Link href="?category=TV">Tvs</Link>
-            <Link href="?category=Accessories">Accessories</Link>
+            <Link href="/?category=Phone">Phones</Link>
+            <Link href="/?category=Laptop">Laptops</Link>
+            <Link href="/?category=Desktop">Desktops</Link>
+            <Link href="/?category=Watch">Watches</Link>
+            <Link href="/?category=TV">Tvs</Link>
+            <Link href="/?category=Accessories">Accessories</Link>
           </FooterList>
           <FooterList>
             <h3 className="font-bold text-base mb-2">Customer Service</h3>

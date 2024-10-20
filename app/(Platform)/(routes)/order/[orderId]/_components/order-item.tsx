@@ -12,7 +12,7 @@ export const OrderItem = ({ item }: OrderItemProps) => {
   const router = useRouter();
 
   return (
-    <div className="grid grid-cols-5 overflow-x-scroll text-xs md:text-sm gap-4 border-t-[1.5px] border-slate-200 py-4 items-center">
+    <div className="grid grid-cols-5 overflow-x-scroll text-xs md:text-sm gap-4 border-t-[1.5px] border-sky-200 py-4 items-center">
       <div className="col-span-2 justify-self-start flex gap-2 md:gap-4">
         <div className="relative w-[70px] aspect-square">
           <Image

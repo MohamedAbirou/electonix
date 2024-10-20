@@ -21,14 +21,14 @@ export const ProductQuantity = ({
       <div className="flex items-center gap-4 text-base">
         <button
           onClick={handleQtyDecrease}
-          className="border-[1.2px] border-slate-300 px-2 rounded"
+          className="border-[1.2px] border-sky-300 px-2 rounded"
         >
           -
         </button>
         <div>{cartProduct.quantity}</div>
         <button
           onClick={handleQtyIncrease}
-          className="border-[1.2px] border-slate-300 px-2 rounded"
+          className="border-[1.2px] border-sky-300 px-2 rounded"
         >
           +
         </button>

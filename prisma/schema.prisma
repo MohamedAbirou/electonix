@@ -95,6 +95,8 @@ model Product {
   inStock     Boolean
   images      Image[]
   reviews     Review[]
+
+  createdAt DateTime @default(now())
 }
 
 model Review {

@@ -1,10 +1,10 @@
 "use client";
 
 import { categories } from "@/constants/categories";
-import Container from "../container";
-import { Category } from "./category";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import Container from "../container";
+import { Category } from "./category";
 
 export const Categories = () => {
   const params = useSearchParams();

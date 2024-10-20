@@ -1,11 +1,11 @@
 "use client";
 import {
-  Chart as ChartJS,
   BarElement,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
   Tooltip,
-  Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
@@ -16,23 +16,24 @@ interface AdminBarGraphProps {
 }
 
 type GraphData = {
-  day: string;
+  month: string;
   date: string;
   totalAmount: number;
 };
 
 export const AdminBarGraph = ({ data }: AdminBarGraphProps) => {
-  const labels = data.map((item) => item.day);
+  const labels = data.map((item) => item.month);
   const amounts = data.map((item) => item.totalAmount);
 
   const chartData = {
     labels: labels,
     datasets: [
       {
-        label: "Sales Amount",
+        // Show the year the order was created
+        label: "Sales Amount" + ` (${new Date().getFullYear()})`,
         data: amounts,
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgb(106,196,231)",
+        borderColor: "rgba(93,159,196, 0.6)",
         borderWidth: 1,
       },
     ],

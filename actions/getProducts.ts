@@ -46,6 +46,9 @@ export async function getProducts(params: IProductParams) {
           },
         },
       },
+      orderBy: {
+        createdAt: "desc", // Order products by createdAt descending
+      },
     });
 
     return products;

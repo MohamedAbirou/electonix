@@ -1,10 +1,10 @@
+import { Footer } from "@/components/footer/footer";
+import { Navbar } from "@/components/navbar";
+import CartProvider from "@/providers/cart-provider";
+import ToastProvider from "@/providers/toast-provider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer/footer";
-import CartProvider from "@/providers/cart-provider";
-import ToastProvider from "@/providers/toast-provider";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} text-slate-700`}
+        className={`${poppins.className} text-sky-700`}
         suppressHydrationWarning
       >
         <ToastProvider />

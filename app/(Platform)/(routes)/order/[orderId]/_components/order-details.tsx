@@ -27,8 +27,8 @@ export const OrderDetails = ({ order }: OrderDetailsProps) => {
           {order.status === "pending" ? (
             <Status
               text="pending"
-              bg="bg-slate-200 px-2 mt-0"
-              color="text-slate-700"
+              bg="bg-zinc-200 px-2 mt-0"
+              color="text-zinc-700"
             />
           ) : order.status === "complete" ? (
             <Status
@@ -45,8 +45,8 @@ export const OrderDetails = ({ order }: OrderDetailsProps) => {
           {order.deliveryStatus === "pending" ? (
             <Status
               text="pending"
-              bg="bg-slate-200 px-2 mt-0"
-              color="text-slate-700"
+              bg="bg-zinc-200 px-2 mt-0"
+              color="text-zinc-700"
             />
           ) : order.deliveryStatus === "dispatched" ? (
             <Status

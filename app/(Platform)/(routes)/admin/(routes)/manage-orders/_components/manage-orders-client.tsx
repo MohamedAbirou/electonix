@@ -1,17 +1,17 @@
 "use client";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { formatter } from "@/utils/formatter";
 import { Heading } from "@/components/heading";
-import { Status } from "@/components/status";
 import { ActionBtn } from "@/components/inputs/action-btn";
-import { MdDeliveryDining, MdDone, MdRemoveRedEye } from "react-icons/md";
-import { IoArrowUndoOutline } from "react-icons/io5";
-import { useCallback, useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { Status } from "@/components/status";
+import { formatter } from "@/utils/formatter";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Order, User } from "@prisma/client";
+import axios from "axios";
 import moment from "moment";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import toast from "react-hot-toast";
+import { IoArrowUndoOutline } from "react-icons/io5";
+import { MdDeliveryDining, MdDone, MdRemoveRedEye } from "react-icons/md";
 
 type ExtendedOrder = Order & {
   user: User;
@@ -57,7 +57,7 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
       headerName: "Amount(USD)",
       width: 130,
       renderCell: (params) => (
-        <div className="font-bold text-slate-800">{params.row.amount}</div>
+        <div className="font-bold text-sky-800">{params.row.amount}</div>
       ),
     },
     {
@@ -67,7 +67,7 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
       renderCell: (params) => (
         <div>
           {params.row.paymentStatus === "pending" ? (
-            <Status text="pending" bg="bg-slate-200" color="text-slate-700" />
+            <Status text="pending" bg="bg-zinc-200" color="text-zinc-700" />
           ) : params.row.paymentStatus === "complete" ? (
             <Status text="completed" bg="bg-green-200" color="text-green-700" />
           ) : null}
@@ -83,8 +83,8 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
           {params.row.deliveryStatus === "pending" ? (
             <Status
               text="pending"
-              bg="bg-slate-200"
-              color="text-slate-700"
+              bg="bg-zinc-200"
+              color="text-zinc-700"
               isLoading={
                 loadingStates[params.row.id]?.reset ||
                 loadingStates[params.row.id]?.dispatch ||

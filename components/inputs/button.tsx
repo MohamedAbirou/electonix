@@ -26,8 +26,8 @@ export const Button = ({
       disabled={disabled}
       className={`${
         disabled && "opacity-70 cursor-not-allowed hover:opacity-70"
-      } rounded-md hover:opacity-95 transition w-full border-slate-700 flex items-center justify-center gap-2 ${
-        outline ? "bg-white text-slate-700" : "bg-slate-700 text-white"
+      } rounded-md hover:opacity-95 transition w-full border-sky-700 flex items-center justify-center gap-2 ${
+        outline ? "bg-white text-sky-700" : "bg-sky-700 text-white"
       } ${
         small
           ? "text-sm py-1 px-2 font-light border-[1px]"

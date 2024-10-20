@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/inputs/button";
 import { Heading } from "@/components/heading";
+import { Button } from "@/components/inputs/button";
 import { useCart } from "@/hooks/use-cart";
 import { formatter } from "@/utils/formatter";
 import {
@@ -79,7 +79,7 @@ export const CheckoutForm = ({
       <h2 className="font-semibold mt-10 mb-7">Payment Information</h2>
       <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
       <hr className="mt-10 h-px" />
-      <div className="flex items-center justify-between pt-8 mb-10 text-slate-700 text-xl">
+      <div className="flex items-center justify-between pt-8 mb-10 text-sky-700 text-xl">
         <p>Total:</p>
         <p className="font-semibold">{formattedPrice}</p>
       </div>

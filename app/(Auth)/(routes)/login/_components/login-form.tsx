@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "@/components/inputs/button";
 import { Heading } from "@/components/heading";
+import { Button } from "@/components/inputs/button";
 import { Input } from "@/components/inputs/input";
 import { SafeUser } from "@/types";
 import { signIn } from "next-auth/react";
@@ -75,7 +75,7 @@ export const LoginForm = ({ currentUser }: LoginFormProps) => {
         icon={AiOutlineGoogle}
         onClick={() => signIn("google")}
       />
-      <hr className="bg-slate-300 w-full h-px" />
+      <hr className="bg-sky-300 w-full h-px" />
       <Input
         id="email"
         label="Email"

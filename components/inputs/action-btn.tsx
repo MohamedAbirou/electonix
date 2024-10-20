@@ -15,7 +15,7 @@ export const ActionBtn = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`flex items-center justify-center rounded cursor-pointer w-[40px] h-[30px] text-slate-700 border border-slate-400 ${
+      className={`flex items-center justify-center rounded cursor-pointer w-[40px] h-[30px] text-sky-700 border border-sky-400 ${
         disabled && "opacity-50 cursor-not-allowed"
       }`}
     >

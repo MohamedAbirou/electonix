@@ -1,12 +1,12 @@
-import Link from "next/link";
-import Container from "./container";
-import { Redressed } from "next/font/google";
-import { CartCount } from "./cart-count";
-import { UserMenu } from "./user-menu";
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import { Categories } from "./categories/categories";
-import { SearchBar } from "./inputs/search-bar";
+import { Redressed } from "next/font/google";
+import Link from "next/link";
 import { Suspense } from "react";
+import { CartCount } from "./cart-count";
+import { Categories } from "./categories/categories";
+import Container from "./container";
+import { SearchBar } from "./inputs/search-bar";
+import { UserMenu } from "./user-menu";
 
 const redressed = Redressed({ subsets: ["latin"], weight: ["400"] });
 
@@ -14,7 +14,7 @@ export const Navbar = async () => {
   const currentUser = await getCurrentUser();
 
   return (
-    <div className="top-0 w-full bg-slate-100 z-30 shadow-sm">
+    <div className="top-0 w-full bg-sky-100 z-30 shadow-sm">
       <div className="py-4 px-3 border-b-[1px]">
         <Container>
           <div className="flex items-center justify-between gap-3 md:gap-0">

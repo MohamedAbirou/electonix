@@ -3,9 +3,11 @@ import { NullData } from "@/components/NullData";
 import Container from "@/components/container";
 import { ManageProductsClient } from "./_components/manage-products-client";
 import { getProducts } from "@/actions/getProducts";
+import { getOrders } from "@/actions/getOrders";
 
 const ManageProducts = async () => {
   const products = await getProducts({ category: null });
+  const orders = await getOrders();
 
   const currentUser = await getCurrentUser();
 
@@ -16,7 +18,7 @@ const ManageProducts = async () => {
   return (
     <div className="pt-8">
       <Container>
-        <ManageProductsClient products={products!} />
+        <ManageProductsClient products={products!} orders={orders!} />
       </Container>
     </div>
   );

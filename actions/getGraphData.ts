@@ -3,9 +3,9 @@ import moment from "moment";
 
 export async function getGraphData() {
   try {
-    // get the start and end dates for the data range (7 days ago to today)
-    const startDate = moment().subtract(6, "days").startOf("day");
-    const endDate = moment().endOf("day");
+    // get the start and end dates for the data range (e.g., last 6 months)
+    const startDate = moment().subtract(6, "months").startOf("month");
+    const endDate = moment().endOf("month");
 
     // Query the database to get the order data grouped by createdDate
     const result = await db.order.groupBy({
@@ -24,7 +24,7 @@ export async function getGraphData() {
 
     // Initialize an object to aggregate the data by day
     const aggregatedData: {
-      [day: string]: { day: string; date: string; totalAmount: number };
+      [month: string]: { month: string; date: string; totalAmount: number };
     } = {};
 
     // Create a clone of the start date to iterate over each day
@@ -32,31 +32,31 @@ export async function getGraphData() {
 
     // Iterate over each day in the date range
     while (currentDate <= endDate) {
-      // Format the day as a string (e.g. "Monday")
-      const day = currentDate.format("dddd");
-      console.log("day: ", day, currentDate);
+      // Format the month as a string (e.g. "January")
+      const month = currentDate.format("MMMM");
+      console.log("month: ", month, currentDate);
 
-      // Initialize the aggregated data for the day with the day, date, and totalAmount
-      aggregatedData[day] = {
-        day,
-        date: currentDate.format("DD-MM-YYYY"),
+      // Initialize the aggregated data for the month with the month, date, and totalAmount
+      aggregatedData[month] = {
+        month,
+        date: currentDate.format("MM-YYYY"),
         totalAmount: 0,
       };
 
-      //   Move to the next day
-      currentDate.add(1, "day");
+      //   Move to the next month
+      currentDate.add(1, "month");
     }
 
-    // Calculate the total amount for each day by summing the order amounts
+    // Calculate the total amount for each month by summing the order amounts
     result.forEach((entry) => {
-      const day = moment(entry.createDate).format("dddd");
+      const month = moment(entry.createDate).format("MMMM");
       const amount = entry._sum.amount || 0;
-      aggregatedData[day].totalAmount += amount;
+      aggregatedData[month].totalAmount += amount;
     });
 
     // Convert the aggregatedData object to an array and sort it by date
     const formattedData = Object.values(aggregatedData).sort((a, b) =>
-      moment(a.date).diff(moment(b.date))
+      moment(a.date, "MM-YYYY").diff(moment(b.date, "MM-YYYY"))
     );
 
     // Return the formatted data

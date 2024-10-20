@@ -18,6 +18,24 @@ export async function DELETE(
       return NextResponse.json("Unauthorized", { status: 401 });
     }
 
+    const order = await db.order.findMany({
+      where: {
+        products: {
+          some: {
+            id,
+          },
+        },
+      },
+    });
+
+    // Cannot delete a product if it is being ordered
+    if (order.length > 0) {
+      return NextResponse.json(
+        "Cannot delete product while it is being ordered",
+        { status: 400 }
+      );
+    }
+
     const product = await db.product.delete({
       where: {
         id,

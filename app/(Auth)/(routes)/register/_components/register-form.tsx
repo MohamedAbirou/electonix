@@ -1,17 +1,17 @@
 "use client";
 
-import { signIn } from "next-auth/react";
-import { Button } from "@/components/inputs/button";
 import { Heading } from "@/components/heading";
+import { Button } from "@/components/inputs/button";
 import { Input } from "@/components/inputs/input";
+import { SafeUser } from "@/types";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AiOutlineGoogle } from "react-icons/ai";
-import { useRouter } from "next/navigation";
-import { SafeUser } from "@/types";
 
 interface RegisterFormProps {
   currentUser: SafeUser | null;
@@ -84,7 +84,7 @@ export const RegisterForm = ({ currentUser }: RegisterFormProps) => {
         icon={AiOutlineGoogle}
         onClick={() => signIn("google")}
       />
-      <hr className="bg-slate-300 w-full h-px" />
+      <hr className="bg-sky-300 w-full h-px" />
       <Input
         id="name"
         label="Name"

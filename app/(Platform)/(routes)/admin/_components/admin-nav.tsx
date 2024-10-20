@@ -1,9 +1,9 @@
 "use client";
 import Container from "@/components/container";
-import Link from "next/link";
-import { AdminNavItem } from "./admin-nav-item";
-import { usePathname } from "next/navigation";
 import { adminRoutes } from "@/constants/admin-routes";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AdminNavItem } from "./admin-nav-item";
 
 export const AdminNav = () => {
   const pathname = usePathname();

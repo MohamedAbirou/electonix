@@ -1,10 +1,10 @@
 "use client";
 
 import { ImageType } from "@/types";
-import { useCallback, useEffect, useState } from "react";
-import { SelectImage } from "./select-image";
-import { Button } from "./button";
 import { truncateText } from "@/utils/truncate-text";
+import { useCallback, useEffect, useState } from "react";
+import { Button } from "./button";
+import { SelectImage } from "./select-image";
 
 interface SelectColorProps {
   item: ImageType;
@@ -50,7 +50,7 @@ export const SelectColor = ({
   );
 
   return (
-    <div className="grid grid-cols-1 overflow-y-auto border-b-[1.2px] border-slate-200 items-center p-2">
+    <div className="grid grid-cols-1 overflow-y-auto border-b-[1.2px] border-sky-200 items-center p-2">
       <div className="flex gap-2 items-center h-[60px]">
         <input
           id={item.color}

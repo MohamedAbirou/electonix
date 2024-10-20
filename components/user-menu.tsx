@@ -1,12 +1,12 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Avatar } from "./avatar";
-import { AiFillCaretDown } from "react-icons/ai";
-import Link from "next/link";
-import { MenuItem } from "./menu-item";
-import { signOut } from "next-auth/react";
-import { Backdrop } from "./backdrop";
 import { SafeUser } from "@/types";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
+import { Avatar } from "./avatar";
+import { Backdrop } from "./backdrop";
+import { MenuItem } from "./menu-item";
 
 interface UserMenuProps {
   currentUser: SafeUser | null;
@@ -38,7 +38,7 @@ export const UserMenu = ({ currentUser }: UserMenuProps) => {
       <div ref={dropdownRef} className="relative z-30">
         <div
           onClick={toggleOpen}
-          className="p-2 border-[1px] border-slate-400 flex flex-row items-center gap-1 rounded-full cursor-pointer hover:shadow-md transition text-slate-700"
+          className="p-2 border-[1px] border-sky-400 flex flex-row items-center gap-1 rounded-full cursor-pointer hover:shadow-md transition text-sky-700"
         >
           <Avatar src={currentUser?.image} />
           <AiFillCaretDown />
