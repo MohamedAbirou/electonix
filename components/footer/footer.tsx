@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Container from "../container";
 import FooterList from "./footer-list";
@@ -11,12 +12,12 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between pt-16 pb-8">
           <FooterList>
             <h3 className="font-bold text-base mb-2">Shop Categories</h3>
-            <Link href="#">Phones</Link>
-            <Link href="#">Laptops</Link>
-            <Link href="#">Desktops</Link>
-            <Link href="#">Watches</Link>
-            <Link href="#">Tvs</Link>
-            <Link href="#">Accessories</Link>
+            <Link href="?category=Phone">Phones</Link>
+            <Link href="?category=Laptop">Laptops</Link>
+            <Link href="?category=Desktop">Desktops</Link>
+            <Link href="?category=Watch">Watches</Link>
+            <Link href="?category=TV">Tvs</Link>
+            <Link href="?category=Accessories">Accessories</Link>
           </FooterList>
           <FooterList>
             <h3 className="font-bold text-base mb-2">Customer Service</h3>

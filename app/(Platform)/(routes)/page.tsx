@@ -1,10 +1,10 @@
 export const revalidate = 0;
 
+import { IProductParams, getProducts } from "@/actions/getProducts";
 import Container from "@/components/container";
+import { NullData } from "@/components/NullData";
 import { Banner } from "./_components/banner";
 import { ProductCard } from "./_components/product-card";
-import { IProductParams, getProducts } from "@/actions/getProducts";
-import { NullData } from "@/components/NullData";
 
 interface HomeProps {
   searchParams?: IProductParams;
@@ -38,7 +38,7 @@ export default async function Home({ searchParams }: HomeProps) {
           <Banner />
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-          {shuffledProducts.map((product: any) => (
+          {shuffledProducts?.map((product: any) => (
             <ProductCard key={product.id} data={product} />
           ))}
         </div>
