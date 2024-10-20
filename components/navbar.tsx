@@ -22,7 +22,7 @@ export const Navbar = async () => {
               href="/"
               className={`${redressed.className} font-bold text-2xl`}
             >
-              E-Shop
+              ElectroniX
             </Link>
             <div className="hidden md:block">
               <SearchBar />

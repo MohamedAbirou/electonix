@@ -34,7 +34,7 @@ export const Footer = () => {
               selection of phones, Tvs, Laptops, Watches and Accessories.
             </p>
             <p>
-              &copy; {new Date().getFullYear()} E-Shop, All rights reserved.
+              &copy; {new Date().getFullYear()} ElectroniX, All rights reserved.
             </p>
           </div>
           <FooterList className="items-center">

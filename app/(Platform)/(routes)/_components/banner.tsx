@@ -6,13 +6,13 @@ export const Banner = () => {
       <div className="mx-auto px-8 py-12 flex flex-col gap-2 md:flex-row items-center justify-evenly">
         <div className="mb-8 md:mb-0 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Summer Sale
+            ElectroFest
           </h1>
           <p className="text-xl text-white mb-2">
-            Enjoy discount on selected items
+            Discover the latest in electronic goods
           </p>
           <p className="uppercase text-2xl text-yellow-400 font-bold">
-            get 50% off
+            SAVE UP TO 50% NOW
           </p>
         </div>
         <div className="w-1/3 relative aspect-video">

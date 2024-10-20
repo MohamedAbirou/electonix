@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ElectroniX
 
-## Getting Started
+## Demo
+<br />
 
-First, run the development server:
+[![ElectroniX](https://github.com/MohamedAbirou/electonix/assets/109366637/20304dc2-d1ad-4099-8be6-9748a2f518e6)](https://electonix.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<br />
+<br />
+
+
+## Features:
+
+- 🖌️ Awesome UI in TailwindCSS
+- 🔥 Full responsiveness
+- 🔐 Authentication with Google Login in Next Auth
+- 👀 Admin Dashboard
+- 📉 Shop Statistics (Summary)
+- ⬆️ Image Uploads in Firebase Storage
+- 🔎 Search Functionality
+- 👨‍👩‍👧‍👦 Product Categories
+- 🔥 Product Rating
+- 🛠️ Manage Products
+- 🛠️ Manage Orders
+- 🚀 Server error handling
+- 💰 Payment Integration in Stripe
+- 📉 Graph of your revenue
+
+
+## Technologies used
+
+- Next.js 14
+- React.js
+- TypeScript
+- Tailwind CSS
+- MUI
+- Prisma ORM
+- Stripe
+- MongoDB
+
+
+### Prerequisites
+
+**Node version 14.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/MohamedAbirou/e-shop.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Install packages
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```shell
+npm i
+```
 
-## Learn More
+### Setup Prisma
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+npx prisma db push
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Start the app
 
-## Deploy on Vercel
+```shell
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Available commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Running commands with npm `npm run [command]`
+
+| command         | description                              |
+| :-------------- | :--------------------------------------- |
+| `dev`           | Starts a development instance of the app |
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome. Feel free to check the issues page if you want to contribute.
+
+## License
+
+MIT
