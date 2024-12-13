@@ -36,10 +36,10 @@ export const LoginForm = ({ currentUser }: LoginFormProps) => {
     }
   }, [currentUser, router]);
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
-      signIn("credentials", {
+      await signIn("credentials", {
         ...data,
         redirect: false,
       }).then((callback) => {

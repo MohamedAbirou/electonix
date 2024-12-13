@@ -39,11 +39,11 @@ export const RegisterForm = ({ currentUser }: RegisterFormProps) => {
     }
   }, [currentUser, router]);
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
-
-      axios.post("/api/register", data).then(() => {
+      // Perform your async operations here
+      await axios.post("/api/register", data).then(() => {
         toast.success("User created!");
 
         signIn("credentials", {
@@ -74,6 +74,8 @@ export const RegisterForm = ({ currentUser }: RegisterFormProps) => {
   if (currentUser) {
     return <p className="text-center">Logged in. Redirecting...</p>;
   }
+
+  console.log("Is submitting: ", isSubmitting);
 
   return (
     <>
