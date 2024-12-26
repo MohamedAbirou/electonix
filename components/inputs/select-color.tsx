@@ -10,8 +10,7 @@ interface SelectColorProps {
   item: ImageType;
   addImageToState: (value: ImageType) => void;
   removeImageFromState: (value: ImageType) => void;
-  isProductCreated?: boolean;
-  isProductUpdated: boolean;
+  isProductCreated: boolean;
 }
 
 export const SelectColor = ({
@@ -19,7 +18,6 @@ export const SelectColor = ({
   addImageToState,
   removeImageFromState,
   isProductCreated,
-  isProductUpdated,
 }: SelectColorProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -29,12 +27,7 @@ export const SelectColor = ({
       setIsSelected(false);
       setFile(null);
     }
-
-    if (isProductUpdated) {
-      setIsSelected(item.image ? true : false);
-      setFile(item.image);
-    }
-  }, [isProductCreated, isProductUpdated, item]);
+  }, [isProductCreated]);
 
   const handleFileChange = useCallback(
     (value: File) => {
