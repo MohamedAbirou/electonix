@@ -6,16 +6,22 @@ interface InputProps {
   id: string;
   label: string;
   type?: string;
+  value?: string | null;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
   disabled?: boolean;
   required?: boolean;
-  register: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
   errors: FieldErrors;
 }
 
 export const Input = ({
   id,
   label,
-  type,
+  type = "text",
+  value,
+  onChange,
+  className,
   disabled,
   required,
   register,
@@ -27,13 +33,15 @@ export const Input = ({
         autoComplete="off"
         id={id}
         disabled={disabled}
-        {...register(id, { required })}
         type={type}
+        value={value!} // Controlled input value
+        onChange={onChange} // Controlled input onChange handler
+        {...(register && register(id, { required }))} // Optional React Hook Form integration
         className={`peer w-full p-4 pt-6 outline-none bg-white font-light border-2 rounded-md transition disabled:opacity-70 disabled:cursor-not-allowed ${
           errors[id]
             ? "border-rose-400 focus:border-rose-400"
             : "border-sky-300 focus:border-sky-300"
-        }`}
+        } ${className}`} // Allow custom className
       />
       <label
         htmlFor={id}

@@ -1,12 +1,12 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import { getOrders } from "@/actions/getOrders";
-import { getProducts } from "@/actions/getProducts";
 import { NullData } from "@/components/NullData";
 import Container from "@/components/container";
-import { ManageProductsClient } from "./_components/manage-products-client";
+import { getOrders } from "@/actions/getOrders";
+import { getUsers } from "@/actions/getUsers";
+import { ManageUsersClient } from "./_components/manage-users-client";
 
 const ManageProducts = async () => {
-  const products = await getProducts({ category: null });
+  const users = await getUsers();
   const orders = await getOrders();
 
   const currentUser = await getCurrentUser();
@@ -18,7 +18,11 @@ const ManageProducts = async () => {
   return (
     <div className="pt-8">
       <Container>
-        <ManageProductsClient products={products!} orders={orders!} />
+        <ManageUsersClient
+          users={users!}
+          orders={orders!}
+          currentUser={currentUser!}
+        />
       </Container>
     </div>
   );

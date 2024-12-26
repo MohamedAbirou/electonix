@@ -55,20 +55,22 @@ export const AdminSummary = ({
     setSummaryData((prev) => {
       let tempData: any = { ...prev };
 
-      const totalSale = orders.reduce((acc, item) => {
+      const totalSale = orders?.reduce((acc, item) => {
         if (item.status === "complete") {
           return acc + item.amount;
         } else return acc;
       }, 0);
 
-      const paidOrders = orders.filter((order) => order.status === "complete");
+      const paidOrders = orders?.filter((order) => order.status === "complete");
 
-      const unpaidOrders = orders.filter((order) => order.status === "pending");
+      const unpaidOrders = orders?.filter(
+        (order) => order.status === "pending"
+      );
 
-      tempData.sale.digit = totalSale;
-      tempData.orders.digit = orders.length;
-      tempData.paidOrders.digit = paidOrders.length;
-      tempData.unpaidOrders.digit = unpaidOrders.length;
+      tempData.sale.digit = totalSale ?? 0;
+      tempData.orders.digit = orders?.length ?? 0;
+      tempData.paidOrders.digit = paidOrders?.length ?? 0;
+      tempData.unpaidOrders.digit = unpaidOrders?.length ?? 0;
       tempData.products.digit = products.length;
       tempData.users.digit = users.length;
 

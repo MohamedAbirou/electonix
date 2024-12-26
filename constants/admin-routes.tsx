@@ -3,6 +3,7 @@ import {
   MdDns,
   MdFormatListBulleted,
   MdLibraryAdd,
+  MdOutlinePeopleAlt,
 } from "react-icons/md";
 
 export const adminRoutes = [
@@ -25,5 +26,10 @@ export const adminRoutes = [
     href: "/admin/manage-orders",
     label: "Manage Orders",
     icon: MdFormatListBulleted,
+  },
+  {
+    href: "/admin/manage-users",
+    label: "Manage Users",
+    icon: MdOutlinePeopleAlt,
   },
 ];

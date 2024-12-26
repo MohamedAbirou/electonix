@@ -18,15 +18,15 @@ export async function GET(
       return NextResponse.json("Unauthorized", { status: 401 });
     }
 
-    const product = await db.product.findUnique({
+    const user = await db.user.findUnique({
       where: {
         id,
       },
     });
 
-    return NextResponse.json(product);
+    return NextResponse.json(user);
   } catch (error) {
-    console.log("[GET_PRODUCT]", error);
+    console.log("[GET_USER]", error);
     return NextResponse.json("Internal Error", { status: 500 });
   }
 }
@@ -35,8 +35,7 @@ export async function PUT(req: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await req.json();
-    const { id, name, description, price, brand, category, inStock, images } =
-      body;
+    const { id, name, email } = body;
 
     if (!currentUser) {
       return NextResponse.json("Unauthorized", { status: 401 });
@@ -46,24 +45,19 @@ export async function PUT(req: Request) {
       return NextResponse.json("Unauthorized", { status: 401 });
     }
 
-    const product = await db.product.update({
+    const user = await db.user.update({
       where: {
         id,
       },
       data: {
         name,
-        description,
-        price: parseFloat(price),
-        brand,
-        category,
-        inStock,
-        images,
+        email,
       },
     });
 
-    return NextResponse.json(product);
+    return NextResponse.json(user);
   } catch (error) {
-    console.log("[UPDATE_PRODUCT]", error);
+    console.log("[UPDATE_USER]", error);
     return NextResponse.json("Internal Error", { status: 500 });
   }
 }
@@ -84,33 +78,22 @@ export async function DELETE(
       return NextResponse.json("Unauthorized", { status: 401 });
     }
 
-    const order = await db.order.findMany({
+    // Delete all related orders
+    await db.order.deleteMany({
       where: {
-        products: {
-          some: {
-            id,
-          },
-        },
+        userId: id,
       },
     });
 
-    // Cannot delete a product if it is being ordered
-    if (order.length > 0) {
-      return NextResponse.json(
-        "Cannot delete product while it is being ordered",
-        { status: 400 }
-      );
-    }
-
-    const product = await db.product.delete({
+    const user = await db.user.delete({
       where: {
         id,
       },
     });
 
-    return NextResponse.json(product);
+    return NextResponse.json(user);
   } catch (error) {
-    console.log("[DELETE_PRODUCT]", error);
+    console.log("[DELETE_USER]", error);
     return NextResponse.json("Internal Error", { status: 500 });
   }
 }

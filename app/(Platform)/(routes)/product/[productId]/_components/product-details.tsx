@@ -5,6 +5,7 @@ import { ProductImage } from "@/components/product/product-image";
 import { ProductQuantity } from "@/components/product/product-quantity";
 import { useCart } from "@/hooks/use-cart";
 import { CartProductType, SelectedImgType } from "@/types";
+import { formatter } from "@/utils/formatter";
 import { Rating } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -102,6 +103,11 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         <div className="space-x-2">
           <span className="uppercase font-semibold">brand:</span>
           <span>{product.brand}</span>
+        </div>
+        <hr className="my-5" />
+        <div className="space-x-2">
+          <span className="uppercase font-semibold">Price:</span>
+          <span>{formatter(product.price)}</span>
         </div>
         <hr className="my-5" />
         {isProductInCart ? (

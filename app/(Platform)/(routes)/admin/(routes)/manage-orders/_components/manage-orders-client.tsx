@@ -50,12 +50,12 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
     {
       field: "customer",
       headerName: "Customer Name",
-      width: 130,
+      width: 180,
     },
     {
       field: "amount",
       headerName: "Amount(USD)",
-      width: 130,
+      width: 170,
       renderCell: (params) => (
         <div className="font-bold text-sky-800">{params.row.amount}</div>
       ),
@@ -63,7 +63,7 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
     {
       field: "paymentStatus",
       headerName: "Payment Status",
-      width: 130,
+      width: 170,
       renderCell: (params) => (
         <div>
           {params.row.paymentStatus === "pending" ? (
@@ -77,7 +77,7 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
     {
       field: "deliveryStatus",
       headerName: "Delivery Status",
-      width: 130,
+      width: 165,
       renderCell: (params) => (
         <div>
           {params.row.deliveryStatus === "pending" ? (
@@ -124,6 +124,8 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
       field: "action",
       headerName: "Actions",
       width: 200,
+      filterable: false,
+      sortable: false,
       renderCell: (params) => (
         <div className="flex items-center mt-2.5 justify-between gap-4 w-full">
           <ActionBtn
@@ -229,7 +231,7 @@ export const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
   );
 
   return (
-    <div className="max-w-[1150px] m-auto text-xl">
+    <div className="max-w-[1290px] m-auto text-xl">
       <div className="my-12">
         <Heading title="Manage Orders" center />
       </div>
