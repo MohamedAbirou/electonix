@@ -34,7 +34,7 @@ export const ListRating = ({ product }: ListRatingProps) => {
             <div key={review.id}>
               <div className="flex items-center gap-2">
                 <Avatar src={review.user.image} />
-                <div className="font-semibold">{review.user.name}A</div>
+                <div className="font-semibold">{review.user.name}</div>
                 <div className="font-light">
                   {moment(review.createdDate).fromNow()}
                 </div>
