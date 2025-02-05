@@ -57,7 +57,7 @@ export const AdminSummary = ({
 
       const totalSale = orders?.reduce((acc, item) => {
         if (item.status === "complete") {
-          return (acc + item.amount) / 100;
+          return acc + (item.amount / 100);
         } else return acc;
       }, 0);
 
