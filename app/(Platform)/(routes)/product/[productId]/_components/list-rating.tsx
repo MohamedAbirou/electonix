@@ -28,7 +28,7 @@ export const ListRating = ({ product }: ListRatingProps) => {
   return (
     <div>
       <Heading title="Product Reviews" />
-      <div className="text-sm mt-5">
+      <div className="text-sm mt-5 max-h-[400px] overflow-y-scroll">
         {product.reviews &&
           product.reviews.map((review: ReviewType) => (
             <div key={review.id}>
