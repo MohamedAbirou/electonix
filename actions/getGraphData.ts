@@ -1,11 +1,11 @@
 import { db } from "@/lib/db";
 import moment from "moment";
 
-export async function getGraphData() {
+export async function getGraphData(year: number) {
   try {
-    // get the start and end dates for the data range (e.g., last 6 months)
-    const startDate = moment().subtract(6, "months").startOf("month");
-    const endDate = moment().endOf("month");
+    // Get the start and end dates for the selected year
+    const startDate = moment().year(year).startOf("year");
+    const endDate = moment().year(year).endOf("year");
 
     // Query the database to get the order data grouped by createdDate
     const result = await db.order.groupBy({
@@ -22,19 +22,18 @@ export async function getGraphData() {
       },
     });
 
-    // Initialize an object to aggregate the data by day
+    // Initialize an object to aggregate the data by month
     const aggregatedData: {
       [month: string]: { month: string; date: string; totalAmount: number };
     } = {};
 
-    // Create a clone of the start date to iterate over each day
+    // Create a clone of the start date to iterate over each month
     const currentDate = startDate.clone();
 
-    // Iterate over each day in the date range
+    // Iterate over each month in the date range
     while (currentDate <= endDate) {
       // Format the month as a string (e.g. "January")
       const month = currentDate.format("MMMM");
-      console.log("month: ", month, currentDate);
 
       // Initialize the aggregated data for the month with the month, date, and totalAmount
       aggregatedData[month] = {
@@ -43,14 +42,16 @@ export async function getGraphData() {
         totalAmount: 0,
       };
 
-      //   Move to the next month
+      // Move to the next month
       currentDate.add(1, "month");
     }
 
     // Calculate the total amount for each month by summing the order amounts
+    // getGraphData.ts
     result.forEach((entry) => {
       const month = moment(entry.createDate).format("MMMM");
-      const amount = entry._sum.amount || 0;
+      const amount = entry._sum.amount || 0 / 100;
+      console.log(`Month: ${month}, Raw Amount: ${amount}`); // Debug log
       aggregatedData[month].totalAmount += amount;
     });
 
