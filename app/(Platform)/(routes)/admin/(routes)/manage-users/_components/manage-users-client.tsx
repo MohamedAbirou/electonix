@@ -42,6 +42,7 @@ export const ManageUsersClient = ({
   }>({});
   const [editingUser, setEditingUser] = useState<SafeUser | null>(null);
   const [isDialogLoading, setIsDialogLoading] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {
@@ -101,6 +102,7 @@ export const ManageUsersClient = ({
       };
 
       setEditingUser(userData);
+      setIsDialogOpen(true); // Open the dialog
     } catch (error) {
       toast.error("Failed to load user data.");
     } finally {
@@ -118,6 +120,7 @@ export const ManageUsersClient = ({
       });
       toast.success("User updated successfully!");
       setEditingUser(null);
+      setIsDialogOpen(false); // Close the dialog
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong!");
@@ -199,7 +202,7 @@ export const ManageUsersClient = ({
             }
             onClick={() => handleToggleRole(params.row.id, params.row.role)}
           />
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <ActionBtn
                 icon={MdEdit}
