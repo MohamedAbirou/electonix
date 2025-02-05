@@ -50,8 +50,7 @@ export async function getGraphData(year: number) {
     // getGraphData.ts
     result.forEach((entry) => {
       const month = moment(entry.createDate).format("MMMM");
-      const amount = entry._sum.amount || 0 / 100;
-      console.log(`Month: ${month}, Raw Amount: ${amount}`); // Debug log
+      const amount = (entry._sum.amount || 0) / 100;
       aggregatedData[month].totalAmount += amount;
     });
 
