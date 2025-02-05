@@ -13,7 +13,7 @@ const AdminPage = async () => {
   const products = await getProducts({ category: null });
   const orders = await getOrders();
   const users = await getUsers();
-  const graphData = await getGraphData();
+  const graphData = await getGraphData(new Date().getFullYear());
 
   if (!currentUser || currentUser.role !== "ADMIN") {
     return <NullData title="Oops! Access Denied!" redirect={true} />;
@@ -24,7 +24,7 @@ const AdminPage = async () => {
       <Container>
         <AdminSummary products={products!} orders={orders!} users={users!} />
         <div className="mt-20 mx-auto max-w-[1150px]">
-          <AdminBarGraph data={graphData!} />
+          <AdminBarGraph initialData={graphData!} />
         </div>
       </Container>
     </div>
