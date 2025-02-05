@@ -7,12 +7,13 @@ import {
   LinearScale,
   Tooltip,
 } from "chart.js";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 interface AdminBarGraphProps {
-  data: GraphData[];
+  initialData: GraphData[];
 }
 
 type GraphData = {
@@ -21,7 +22,20 @@ type GraphData = {
   totalAmount: number;
 };
 
-export const AdminBarGraph = ({ data }: AdminBarGraphProps) => {
+export const AdminBarGraph = ({ initialData }: AdminBarGraphProps) => {
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [data, setData] = useState(initialData);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`/api/graph-data?year=${selectedYear}`);
+      const result = await response.json();
+      setData(result);
+    };
+
+    fetchData();
+  }, [selectedYear]);
+
   const labels = data.map((item) => item.month);
   const amounts = data.map((item) => item.totalAmount);
 
@@ -29,8 +43,7 @@ export const AdminBarGraph = ({ data }: AdminBarGraphProps) => {
     labels: labels,
     datasets: [
       {
-        // Show the year the order was created
-        label: "Sales Amount" + ` (${new Date().getFullYear()})`,
+        label: `Sales Amount (${selectedYear}) in USD`,
         data: amounts,
         backgroundColor: "rgb(106,196,231)",
         borderColor: "rgba(93,159,196, 0.6)",
@@ -47,5 +60,21 @@ export const AdminBarGraph = ({ data }: AdminBarGraphProps) => {
     },
   };
 
-  return <Bar data={chartData} options={options}></Bar>;
+  return (
+    <div>
+      <select
+        value={selectedYear}
+        onChange={(e) => setSelectedYear(Number(e.target.value))}
+      >
+        {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i).map(
+          (year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          )
+        )}
+      </select>
+      <Bar data={chartData} options={options} />
+    </div>
+  );
 };
