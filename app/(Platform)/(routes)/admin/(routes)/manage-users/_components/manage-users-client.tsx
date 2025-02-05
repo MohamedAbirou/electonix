@@ -10,6 +10,8 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
+  DialogOverlay,
+  DialogPortal,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -209,7 +211,9 @@ export const ManageUsersClient = ({
                 onClick={() => handleEdit(params.row.id)}
               />
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogPortal>
+            <DialogOverlay className="bg-black/50" />
+              <DialogContent className="bg-white sm:max-w-[425px]">
               <DialogHeader>
                 <DialogTitle>Edit User</DialogTitle>
                 <DialogDescription>
@@ -252,6 +256,7 @@ export const ManageUsersClient = ({
                 />
               </DialogFooter>
             </DialogContent>
+              <DialogPortal>
           </Dialog>
           <ActionBtn
             icon={MdDelete}
