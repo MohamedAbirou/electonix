@@ -212,7 +212,7 @@ export const ManageUsersClient = ({
               />
             </DialogTrigger>
             <DialogPortal>
-            <DialogOverlay className="bg-black/50" />
+              <DialogOverlay className="bg-black/50" />
               <DialogContent className="bg-white sm:max-w-[425px]">
               <DialogHeader>
                 <DialogTitle>Edit User</DialogTitle>
@@ -255,8 +255,8 @@ export const ManageUsersClient = ({
                   onClick={handleSubmit(onSubmit)}
                 />
               </DialogFooter>
-            </DialogContent>
-              <DialogPortal>
+              </DialogContent>
+            </DialogPortal>
           </Dialog>
           <ActionBtn
             icon={MdDelete}
