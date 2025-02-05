@@ -44,6 +44,7 @@ export const ManageProductsClient = ({
 
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isDialogLoading, setIsDialogLoading] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {
@@ -128,6 +129,7 @@ export const ManageProductsClient = ({
       };
 
       setEditingProduct(userData);
+      setIsDialogOpen(true); // Open the dialog
     } catch (error) {
       toast.error("Failed to load product data.");
     } finally {
@@ -152,6 +154,7 @@ export const ManageProductsClient = ({
 
       toast.success("Product updated successfully!");
       setEditingProduct(null);
+      setIsDialogOpen(false); // Close the dialog
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong!");
@@ -238,7 +241,7 @@ export const ManageProductsClient = ({
             icon={MdCached}
             onClick={() => handleToggleStock(params.row.id, params.row.inStock)}
           />
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <ActionBtn
                 icon={MdEdit}
