@@ -36,7 +36,7 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className="flex items-center">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex items-center">
       <input
         {...register("searchTerm")}
         type="text"
@@ -45,11 +45,11 @@ export const SearchBar = () => {
         autoComplete="off"
       />
       <button
-        onClick={handleSubmit(onSubmit)}
+        type="submit"
         className="bg-sky-700 hover:opacity-80 text-white p-2 rounded-r-md"
       >
         Search
       </button>
-    </div>
+    </form>
   );
 };
