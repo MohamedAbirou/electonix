@@ -34,7 +34,7 @@
     "lucide-react": "^0.336.0",
     "micro": "^10.0.1",
     "moment": "^2.30.1",
-    "next": "^14.2.15",
+    "next": "14.2.35",
     "query-string": "^9.0.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
